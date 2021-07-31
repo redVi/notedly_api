@@ -2,6 +2,7 @@ const express = require('express')
 const { ApolloServer, gql } = require('apollo-server-express')
 
 const port = process.env.PORT || 4000
+const db = require('./db')
 
 let notes = [
   { id: '1', content: 'This is a note', author: 'Adam Scott' },
@@ -50,6 +51,8 @@ const resolvers = {
 async function startServer () {
   try {
     const app = express()
+    db.connect()
+
     const server = new ApolloServer({ typeDefs, resolvers })
 
     await server.start()
