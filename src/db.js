@@ -1,8 +1,11 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-const DB_HOST = process.env.DB_HOST
 const PORT = process.env.PORT
+const HOST = process.env.DB_HOST
+const NAME = process.env.DB_NAME
+const USER = process.env.DB_USERNAME
+const PASS = process.env.DB_PASSWORD
 
 module.exports = {
   connect: () => {
@@ -19,9 +22,10 @@ module.exports = {
     mongoose.set('useUnifiedTopology', true);
 
     // Подключаемся к БД
-    mongoose.connect(`mongodb://${DB_HOST}:${PORT}/notedly`).catch(err => {
-      console.log('mongoose connection error: ', err);
-      process.exit();
-    });
+    mongoose.connect(`mongodb://${USER}:${PASS}@${HOST}:${PORT}/${NAME}`)
+      .catch(err => {
+        console.log('mongoose connection error: ', err);
+        process.exit();
+      });
   }
 }
