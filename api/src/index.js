@@ -5,9 +5,6 @@ const port = process.env.API_PORT || 4000
 const db = require('./db')
 const server = require('./server')
 
-console.log('process.env.DATABASE_URL', process.env.DATABASE_URL)
-console.log('process.env.JWT_SECRET', process.env.JWT_SECRET)
-
 const whitelist = [
   'https://studio.apollographql.com/sandbox/explorer',
 ]

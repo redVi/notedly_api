@@ -11,4 +11,4 @@ RUN yarn install --production
 COPY . .
 
 # Run
-CMD [ "npm", "start" ]
+CMD ["yarn", "start"]

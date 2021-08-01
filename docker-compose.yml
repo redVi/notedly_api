@@ -16,7 +16,9 @@ services:
       - $DB_PORT:$DB_PORT
     volumes:
       - ./.docker/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
-      - mongodb:/data/db
+      - mongodata:/data/db
+    logging:
+      driver: "none"
 
   server:
     build:
@@ -34,4 +36,4 @@ services:
       - database
 
 volumes:
-  mongodb:
+  mongodata:

@@ -6,7 +6,6 @@ const { AuthenticationError,  ForbiddenError } = require('apollo-server-express'
 
 module.exports = {
   createNote: async (parent, args, { models, user }) => {
-    console.log('user', user)
     if (!user) throw new AuthenticationError('You must be signed in to create a note')
 
     try {
