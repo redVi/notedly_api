@@ -5,4 +5,3 @@ module.exports = {
   note: async (parent, args, {models}) =>
     await models.Note.findById(args.id)
 }
-
