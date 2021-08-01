@@ -18,12 +18,6 @@ const UserSchema = new mongoose.Schema({
   avatar: {
     type: String
   },
-  notes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Note'
-    }
-  ]
 }, {
   timestamps: true,
   validateBeforeSave: true

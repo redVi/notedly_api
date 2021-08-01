@@ -4,15 +4,13 @@ const noteSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
-    validate: () => 'Введите текст'
   },
   author: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
-    validate: () => 'Введите имя автора'
   },
 }, {
-  // Присваиваем поля createdAt и updatedAt с типом данных
   timestamps: true,
   validateBeforeSave: true
 })

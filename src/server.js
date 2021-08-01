@@ -16,7 +16,7 @@ const getUser = token => {
   }
 }
 
-const server = new ApolloServer({
+module.exports = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
@@ -32,5 +32,3 @@ const server = new ApolloServer({
     name: error.extensions?.exception?.name || error.name,
   })
 })
-
-module.exports = server
