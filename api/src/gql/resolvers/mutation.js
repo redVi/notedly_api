@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('../../helpers/dotenv')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const gravatar = require('gravatar')

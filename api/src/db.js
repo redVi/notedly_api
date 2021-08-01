@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('./helpers/dotenv')
 const mongoose = require('mongoose')
 
 const PORT = process.env.PORT

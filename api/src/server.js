@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('./helpers/dotenv')
 const jwt = require('jsonwebtoken')
 const depthLimit = require('graphql-depth-limit')
 const { createComplexityLimitRule } = require('graphql-validation-complexity')
