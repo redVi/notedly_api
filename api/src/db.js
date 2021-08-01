@@ -1,11 +1,5 @@
-require('./helpers/dotenv')
 const mongoose = require('mongoose')
-
-const PORT = process.env.PORT
-const HOST = process.env.DB_HOST
-const NAME = process.env.DB_NAME
-const USER = process.env.DB_USERNAME
-const PASS = process.env.DB_PASSWORD
+const DATABASE_URL = process.env.DATABASE_URL
 
 module.exports = {
   connect: () => {
@@ -21,8 +15,7 @@ module.exports = {
     // Используем новый механизм обнаружения и мониторинга серверов
     mongoose.set('useUnifiedTopology', true);
 
-    // Подключаемся к БД
-    mongoose.connect(`mongodb://${USER}:${PASS}@${HOST}:${PORT}/${NAME}`)
+    mongoose.connect(DATABASE_URL)
       .catch(err => {
         console.log('mongoose connection error: ', err);
         process.exit();

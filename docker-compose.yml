@@ -1,21 +1,37 @@
 version: '3.9'
 
 services:
-
-  mongodb:
+  database:
     image: mongo:latest
     container_name: notedly_db
     restart: unless-stopped
     command: --wiredTigerCacheSizeGB 1.1
     environment:
-      MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
-      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
-      MONGO_INITDB_DATABASE: $DB_NAME
+      - MONGO_INITDB_ROOT_USERNAME=$DB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$DB_ROOT_PASSWORD
+      - MONGO_INITDB_DATABASE=$DB_NAME
+      - DB_USERNAME=$DB_USERNAME
+      - DB_PASSWORD=$DB_PASSWORD
     ports:
-      DB_PORT: $DB_PORT
+      - $DB_PORT:$DB_PORT
     volumes:
-      - ./.docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./.docker/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
       - mongodb:/data/db
+
+  server:
+    build:
+      context: ./api
+      dockerfile: ../.docker/Dockerfile.node
+    container_name: notedly_server
+    domainname: local.dev.gql
+    env_file: .env
+    environment:
+      - DATABASE_URL=mongodb://$DB_USERNAME:$DB_PASSWORD@database:$DB_PORT/$DB_NAME
+    restart: unless-stopped
+    ports:
+      - $API_PORT:$API_PORT
+    depends_on:
+      - database
 
 volumes:
   mongodb:

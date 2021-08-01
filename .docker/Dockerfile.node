@@ -1,0 +1,14 @@
+FROM node:14-alpine3.14
+
+# Create directory
+WORKDIR ./api
+
+# Install dependencies
+COPY package.json yarn.lock ./
+RUN yarn install --production
+
+# Bundle source
+COPY . .
+
+# Run
+CMD [ "npm", "start" ]
