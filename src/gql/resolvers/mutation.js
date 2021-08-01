@@ -45,15 +45,11 @@ module.exports = {
       throw new ForbiddenError("You don't have permissions to update the note")
     }
 
-    return note.update(
+    return models.Note.findOneAndUpdate(
       { _id: id },
       { $set: { content } },
       { new: true }
-    )
-
-    // return await models.Note.findOneAndUpdate(
-    //
-    // )
+    );
   },
 
   signUp: async (parent, { username, email, password }, { models }) => {
@@ -87,5 +83,28 @@ module.exports = {
     if (!isPasswordValid) throw new ForbiddenError('Forbidden')
 
     return jwt.sign({ id: user._id }, process.env.JWT_SECRET)
-  }
+  },
+
+  toggleFavorite: async (parent, {id }, { models, user }) => {
+    if (!user) throw new AuthenticationError()
+
+    let noteCheck = await models.Note.findById(id)
+    const hasUser = noteCheck.favoritedBy.indexOf(user.id)
+
+    if (hasUser >= 0) {
+      return models.Note.findByIdAndUpdate(id, {
+        $pull: {favoritedBy: mongoose.Types.ObjectId(user.id)},
+        $inc: {favoriteCount: -1}
+      }, {
+        new: true
+      });
+    }
+
+    return models.Note.findByIdAndUpdate(id, {
+      $push: {favoritedBy: mongoose.Types.ObjectId(user.id)},
+      $inc: {favoriteCount: 1}
+    }, {
+      new: true
+    });
+  },
 }

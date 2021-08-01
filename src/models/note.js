@@ -10,9 +10,18 @@ const noteSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  favoriteCount: {
+    type: Number,
+    default: 0,
+  },
+  favoritedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
 }, {
   timestamps: true,
-  validateBeforeSave: true
 })
 
 const Note = mongoose.model('Note', noteSchema)
