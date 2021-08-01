@@ -1,0 +1,49 @@
+{
+  "name": "notedly_client",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "final": "parcel final/index.html",
+    "deploy:src": "parcel build src/index.html --public-url ./",
+    "deploy:final": "parcel build final/index.html --public-url ./",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "@apollo/client": "3.5.0-beta.1",
+    "@types/react": "17.0.15",
+    "apollo-link-context": "1.0.20",
+    "date-fns": "2.23.0",
+    "graphql": "15.5.1",
+    "normalize.css": "8.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-markdown": "6.0.3",
+    "react-router-dom": "5.2.0",
+    "styled-components": "5.3.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "8.0.0",
+    "babel-core": "6.26.3",
+    "babel-plugin-styled-components": "1.13.2",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "cypress": "8.1.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-cypress": "2.11.3",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "graphql-request": "3.5.0",
+    "parcel-bundler": "1.12.3",
+    "prettier": "2.3.2",
+    "test-data-bot": "0.8.0"
+  },
+  "engines": {
+    "node": ">=14.17.1"
+  }
+}

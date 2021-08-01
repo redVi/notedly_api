@@ -63,5 +63,10 @@ typings/
 # VSCode settings
 .vscode/
 
-# Database
-mongo-data
+# built files
+dist
+.cache
+
+# cypress videos & screenshots
+cypress/videos
+cypress/screenshots
