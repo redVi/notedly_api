@@ -1,4 +1,6 @@
 const express = require('express')
+const helmet = require('helmet')
+const cors = require('cors')
 const port = process.env.PORT || 4000
 const db = require('./db')
 const server = require('./server')
@@ -6,6 +8,8 @@ const server = require('./server')
 async function startServer () {
   try {
     const app = express()
+    app.use(helmet()).use(cors()).disable('x-powered-by')
+
     db.connect()
 
     await server.start()
