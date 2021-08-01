@@ -1,4 +1,4 @@
-# Connect to database
+# notedly
 
 ## connect to database:
 mongodb://user:password@localhost:27017/database_name
@@ -19,3 +19,6 @@ db.createUser(
   }
 )
 ```
+
+## GraphQL interface
+open https://studio.apollographql.com/sandbox/explorer

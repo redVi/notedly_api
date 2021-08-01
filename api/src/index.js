@@ -1,7 +1,7 @@
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
-const port = process.env.PORT || 4000
+const port = process.env.API_PORT || 3001
 const db = require('./db')
 const server = require('./server')
 

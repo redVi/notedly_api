@@ -1,9 +1,12 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
+import Pages from './pages'
+import GlobalStyle from './components/GlobalStyle'
 
 const App = () => (
   <div>
-    <h1>Hello</h1>
+    <GlobalStyle />
+    <Pages />
   </div>
 )
 
