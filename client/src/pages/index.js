@@ -1,19 +1,21 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Home from './home'
-import Favorites from './favorites'
-import MyNotes from './mynotes'
+import HomePage from './home'
+import FavoritesPage from './favorites'
+import MyNotesPage from './mynotes'
 import NotePage from './note'
+import SignupPage from './signup'
 import Layout from '../components/Layout'
 
 const Pages = () => (
   <Router>
     <Layout>
-      <Route exact path="/" component={Home} />
-      <Route path="/mynote" component={MyNotes} />
-      <Route path="/favorites" component={Favorites} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/mynote" component={MyNotesPage} />
+      <Route path="/favorites" component={FavoritesPage} />
       <Route path="/note/:id" component={NotePage} />
+      <Route path="/signup" component={SignupPage} />
     </Layout>
   </Router>
 )
