@@ -1,11 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const GET_NOTES = gql`
-  query noteFeed($cursor: String) {
-    noteFeed(cursor: $cursor) {
-      cursor
-      hasNextPage
-      notes {
+export const GET_NOTE = gql`
+    query note($id: ID!) {
+      note(id: $id) {
         id
         createdAt
         content
@@ -17,5 +14,4 @@ export const GET_NOTES = gql`
         }
       }
     }
-  }
 `
