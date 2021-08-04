@@ -34,7 +34,8 @@ const NavList = styled.ul`
 const data = [
   { url: '/', id: 1, name: 'Home' },
   { url: '/favorites', id: 2, name: 'Favorites' },
-  { url: '/mynotes', id: 3, name: 'My notes' }
+  { url: '/mynotes', id: 3, name: 'My notes' },
+  { url: '/new', id: 4, name: 'New note' }
 ]
 
 const Navigation = () => (
