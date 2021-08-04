@@ -6,6 +6,7 @@ import FavoritesPage from './favorites'
 import MyNotesPage from './mynotes'
 import NotePage from './note'
 import SignupPage from './signup'
+import SignInPage from './signin'
 import Layout from '../components/Layout'
 
 const Pages = () => (
@@ -16,6 +17,7 @@ const Pages = () => (
       <Route path="/favorites" component={FavoritesPage} />
       <Route path="/note/:id" component={NotePage} />
       <Route path="/signup" component={SignupPage} />
+      <Route path="/signin" component={SignInPage} />
     </Layout>
   </Router>
 )

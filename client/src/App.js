@@ -6,7 +6,7 @@ import { isLoggedInVar } from './gql/cache'
 import Pages from './pages'
 import GlobalStyle from './components/GlobalStyle'
 
-const uri = process.env.API_URI
+const uri = 'http://localhost:4000/api'
 
 const cache = new InMemoryCache({
   typePolicies: {

@@ -1,15 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useMutation } from '@apollo/client'
 import { SIGN_UP } from '../../gql/mutations/signup'
 import { isLoggedInVar } from '../../gql/cache'
 
 export const SignupContainer = ({ history, render }) => {
-  const [values, setValues] = useState({})
-
-  const onChange = event => {
-    setValues({ ...values, [event.target.name]: event.target.value })
-  }
-
   const [signUp, { loading, error }] = useMutation(SIGN_UP, {
     onCompleted: data => {
       localStorage.setItem('token', data.signUp)
@@ -18,7 +12,7 @@ export const SignupContainer = ({ history, render }) => {
     }
   })
 
-  const handleSubmit = event => {
+  const handleSubmit = (event, values) => {
     event.preventDefault()
     signUp({ variables: { ...values } })
   }
@@ -28,7 +22,7 @@ export const SignupContainer = ({ history, render }) => {
 
   return (
     <React.Fragment>
-      {render(onChange, handleSubmit)}
+      {render(handleSubmit)}
     </React.Fragment>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const SignupInput = ({ label, name, id, type, placeholder, onChange }) => (
+export const Input = ({ label, name, id, type, placeholder, required, onChange }) => (
   <React.Fragment>
     <label htmlFor="username">{label}: </label>
     <input
-      required
+      required={required}
       autoComplete="off"
       type={type}
       id={id}

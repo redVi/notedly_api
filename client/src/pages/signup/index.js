@@ -1,10 +1,10 @@
 import React from 'react'
 import { SignupContainer } from './SignupContainer'
-import { SignupView } from './SignupView'
+import UserForm from '../../components/UserForm'
 
 const SignupPage = ({ history }) => (
   <SignupContainer history={history} render={(onChange, handleSubmit) =>
-    <SignupView onChange={onChange} handleSubmit={handleSubmit} />
+    <UserForm formType="signup" handleSubmit={handleSubmit} />
   } />
 )
 
