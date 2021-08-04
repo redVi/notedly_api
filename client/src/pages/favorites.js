@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
-import { GET_FAVORITES } from '../gql/queries/favorites'
+import { GET_FAVORITES } from '../gql/queries'
 import NoteFeed from '../components/NoteFeed'
 
 const Favorites = () => {

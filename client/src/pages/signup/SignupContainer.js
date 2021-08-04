@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { SIGN_UP } from '../../gql/mutations/signup'
+import { SIGN_UP } from '../../gql/mutations'
 import { isLoggedInVar } from '../../gql/cache'
 
 export const SignupContainer = ({ history, render }) => {

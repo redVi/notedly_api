@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom'
-import { GET_NOTE } from '../gql/queries/note'
+import { GET_NOTE } from '../gql/queries'
 import Note from '../components/Note'
 
 const NotePage = () => {

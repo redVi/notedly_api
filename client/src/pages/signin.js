@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
 import { isLoggedInVar } from '../gql/cache'
-import { SIGN_IN } from '../gql/mutations/signin'
+import { SIGN_IN } from '../gql/mutations'
 import UserForm from '../components/UserForm'
 
 const SignIn = ({ history }) => {

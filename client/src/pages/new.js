@@ -1,8 +1,7 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { NEW_NOTE } from '../gql/mutations/new'
-import { GET_NOTES } from '../gql/queries/notes'
-import { GET_MY_NOTES } from '../gql/queries/me'
+import { NEW_NOTE } from '../gql/mutations'
+import { GET_NOTES, GET_MY_NOTES } from '../gql/queries'
 import NoteForm from '../components/NoteForm'
 
 const NewNote = props => {

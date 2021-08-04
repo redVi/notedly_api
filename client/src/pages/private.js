@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect, Route} from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { IS_LOGGED_IN } from '../gql/cache'
 
