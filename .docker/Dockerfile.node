@@ -11,4 +11,4 @@ RUN yarn install --production
 COPY . .
 
 # Run
-CMD ["yarn", "start"]
+CMD ["yarn", "start:api"]
