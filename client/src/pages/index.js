@@ -8,13 +8,14 @@ import NotePage from './note'
 import SignupPage from './signup'
 import SignInPage from './signin'
 import Layout from '../components/Layout'
+import PrivateRoute from './private'
 
 const Pages = () => (
   <Router>
     <Layout>
       <Route exact path="/" component={HomePage} />
-      <Route path="/mynote" component={MyNotesPage} />
-      <Route path="/favorites" component={FavoritesPage} />
+      <PrivateRoute path="/mynotes" component={MyNotesPage} />
+      <PrivateRoute path="/favorites" component={FavoritesPage} />
       <Route path="/note/:id" component={NotePage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/signin" component={SignInPage} />
