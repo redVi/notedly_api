@@ -1,26 +1,35 @@
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client'
-import { setContext } from 'apollo-link-context'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { typeDefs } from './gql/typeDefs'
+import { isLoggedInVar } from './gql/cache'
 import Pages from './pages'
 import GlobalStyle from './components/GlobalStyle'
 
 const uri = process.env.API_URI
-const cache = new InMemoryCache()
-const httpLink = createHttpLink({ uri })
-const authLink = setContext((_, { headers }) => {
-  return {
-    headers: {
-      ...headers,
-      authorization: localStorage.getItem('token') || ''
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        isLoggedIn: {
+          read() {
+            return isLoggedInVar()
+          }
+        }
+      }
     }
   }
 })
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  uri,
   cache,
+  headers: {
+    authorization: localStorage.getItem('token') || ''
+  },
   resolvers: {},
+  typeDefs,
   connectToDevTools: true
 })
 

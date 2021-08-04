@@ -1,5 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useApolloClient } from '@apollo/client'
 import styled from 'styled-components'
+import { IS_LOGGED_IN } from '../gql/cache'
 import logo from '../img/logo.png'
 
 const HeaderBar = styled.header`
@@ -20,12 +23,31 @@ const LogoText = styled.h1`
   display: inline;
 `;
 
-const Header = ({ children }) => (
-  <HeaderBar>
-    <img src={logo} alt="Company logo" height={40} />
-    <LogoText>Notedly</LogoText>
-    {children}
-  </HeaderBar>
-)
+const UserState = styled.div`
+  margin-left: auto;
+`;
+
+const Header = ({ children }) => {
+  const client = useApolloClient()
+  const { isLoggedIn } = client.readQuery({ query: IS_LOGGED_IN })
+
+  return (
+    <HeaderBar>
+      <img src={logo} alt="Company logo" height={40} />
+      <LogoText>Notedly</LogoText>
+      <UserState>
+        {isLoggedIn ? (
+          <p>Log out</p>
+        ): (
+          <p>
+            <Link to="/signup">Sign up</Link> or {' '}
+            <Link to="/signin">Sign in</Link>
+          </p>
+        )}
+      </UserState>
+      {children}
+    </HeaderBar>
+  )
+}
 
 export default Header

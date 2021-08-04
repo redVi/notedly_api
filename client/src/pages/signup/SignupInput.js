@@ -5,6 +5,7 @@ export const SignupInput = ({ label, name, id, type, placeholder, onChange }) =>
     <label htmlFor="username">{label}: </label>
     <input
       required
+      autoComplete="off"
       type={type}
       id={id}
       name={name}
