@@ -1,7 +1,7 @@
 import React from 'react'
 import {Redirect, Route} from 'react-router-dom'
 import { useQuery } from '@apollo/client'
-import {IS_LOGGED_IN} from '../gql/cache'
+import { IS_LOGGED_IN } from '../gql/cache'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { loading, error, data } = useQuery(IS_LOGGED_IN)

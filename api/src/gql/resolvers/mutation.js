@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const gravatar = require('gravatar')
 const mongoose = require('mongoose')
-const { AuthenticationError,  ForbiddenError } = require('apollo-server-express')
+const { AuthenticationError, ForbiddenError } = require('apollo-server-express')
 
 module.exports = {
   createNote: async (parent, args, { models, user }) => {

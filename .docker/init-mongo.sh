@@ -10,7 +10,7 @@ mongo -- "$MONGO_INITDB_DATABASE" <<EOF
   var passwd = '$DB_PASSWORD';
 
   db.createUser({user: user, pwd: passwd, roles: ["readWrite"]});
-  db.user.insert({
+  db.users.insert({
     "username": "jack",
     "email": "some@mail.com",
     "password": "123",

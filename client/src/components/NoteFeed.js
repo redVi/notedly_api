@@ -14,7 +14,7 @@ const NoteFeed = ({ notes }) => (
   <section>
     {notes.map(note => (
       <NoteWrapper key={note.id}>
-       <Note note={note} />
+        <Note note={note} />
       </NoteWrapper>
     ))}
   </section>
