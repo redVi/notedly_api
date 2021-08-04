@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { SIGN_UP } from '../../gql/mutations/signup'
 
-export const SignupContainer = props => {
+export const SignupContainer = ({ history, render }) => {
   const [values, setValues] = useState({})
 
   const onChange = event => {
@@ -11,7 +11,8 @@ export const SignupContainer = props => {
 
   const [signUp, { loading, error }] = useMutation(SIGN_UP, {
     onCompleted: data => {
-      console.log('data', data.signUp)
+      localStorage.setItem('token', data.signUp)
+      history.push('/')
     }
   })
 
@@ -25,7 +26,7 @@ export const SignupContainer = props => {
 
   return (
     <React.Fragment>
-      {props.render(onChange, handleSubmit)}
+      {render(onChange, handleSubmit)}
     </React.Fragment>
   )
 }
