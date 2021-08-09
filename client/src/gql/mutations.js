@@ -49,3 +49,9 @@ export const EDIT_NOTE = gql`
     }
   }
 `
+
+export const DELETE_NOTE = gql`
+  mutation deleteNote($id: ID!) {
+    deleteNote(id: $id)
+  }
+`

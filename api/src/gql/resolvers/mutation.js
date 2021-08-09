@@ -24,11 +24,12 @@ module.exports = {
     const note = await models.Note.findById({ _id: id })
 
     if (note && String(note.author) !== user.id) {
-      throw new ForbiddenError("You don't have permissions to delete the note")
+      throw new ForbiddenError('You don\'t have permissions to delete the note')
     }
 
     try {
       await note.remove()
+      return true
     } catch (err) {
       return false
     }
@@ -40,14 +41,14 @@ module.exports = {
     const note = await models.Note.findById({ _id: id })
 
     if (note && String(note.author) !== user.id) {
-      throw new ForbiddenError("You don't have permissions to update the note")
+      throw new ForbiddenError('You don\'t have permissions to update the note')
     }
 
     return models.Note.findOneAndUpdate(
       { _id: id },
       { $set: { content } },
       { new: true }
-    );
+    )
   },
 
   signUp: async (parent, { username, email, password }, { models }) => {
@@ -60,7 +61,7 @@ module.exports = {
         username,
         email,
         avatar,
-        password: hashed,
+        password: hashed
       })
 
       return jwt.sign({ id: user._id }, process.env.JWT_SECRET)
@@ -83,7 +84,7 @@ module.exports = {
     return jwt.sign({ id: user._id }, process.env.JWT_SECRET)
   },
 
-  toggleFavorite: async (parent, {id }, { models, user }) => {
+  toggleFavorite: async (parent, { id }, { models, user }) => {
     if (!user) throw new AuthenticationError()
 
     let noteCheck = await models.Note.findById(id)
@@ -91,18 +92,18 @@ module.exports = {
 
     if (hasUser >= 0) {
       return models.Note.findByIdAndUpdate(id, {
-        $pull: {favoritedBy: mongoose.Types.ObjectId(user.id)},
-        $inc: {favoriteCount: -1}
+        $pull: { favoritedBy: mongoose.Types.ObjectId(user.id) },
+        $inc: { favoriteCount: -1 }
       }, {
         new: true
-      });
+      })
     }
 
     return models.Note.findByIdAndUpdate(id, {
-      $push: {favoritedBy: mongoose.Types.ObjectId(user.id)},
-      $inc: {favoriteCount: 1}
+      $push: { favoritedBy: mongoose.Types.ObjectId(user.id) },
+      $inc: { favoriteCount: 1 }
     }, {
       new: true
-    });
-  },
+    })
+  }
 }
