@@ -22,7 +22,7 @@ const EditNotePage = ({ history }) => {
   if (error || userError) return <p>Note not found</p>
   if (userData.me.id !== data.note.author.id) return <p>You do not have access to edit this note</p>
 
-  return <NoteForm action={editNote} />
+  return <NoteForm content={data.note.content} action={editNote} />
 }
 
 export default EditNotePage
